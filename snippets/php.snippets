@@ -1,7 +1,7 @@
 snippet <?
 	<?php
 	/**
-	 * @file        ${1}
+	 * @file        ${1:`Filename('$1.php')`}
 	 *
 	 * @date        `strftime("%Y-%m-%d")`
 	 *
@@ -10,9 +10,9 @@ snippet <?
 	 */
 	${2}
 snippet req
-	require '${1:file}';${2}
+	require __DIR__.'/${1:file}';${2}
 snippet req1
-	require_once '${1:file}';${2}
+	require_once __DIR__.'${1:file}';${2}
 snippet $_ COOKIE['...']
 	$_COOKIE['${1:variable}']${2}
 snippet $_ ENV['...']
