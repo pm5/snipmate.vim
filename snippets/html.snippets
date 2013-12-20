@@ -116,24 +116,22 @@ snippet head
 	</head>
 snippet title
 	<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>${2}
-snippet script
+snippet script src
+	<script src="${1}.js"></script>${2}
+snippet script embed
 	<script>
-	  ${1}
+		${1}
 	</script>${2}
-snippet scriptsrc
-	<script src="${1}.js" type="text/javascript" charset="utf-8"></script>${2}
-snippet style
+snippet style embed
 	<style type="text/css" media="${1:screen}">
 	  ${2}
 	</style>${3}
+snippet style src
+	<link rel="stylesheet" href="${1:styles.css}" type="text/css" media="${2:screen}" charset="utf-8"`Close()`>${3}
 snippet base
 	<base href="${1}" target="${2}"`Close()`>
 snippet r
 	<br`Close()[1:]`>
-snippet div
-	<div id="${1:name}">
-	  ${2}
-	</div>
 # Embed QT Movie
 snippet movie
 	<object width="$2" height="$3" classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"
@@ -164,7 +162,7 @@ snippet form
 snippet h1
 	<h1 id="${1:heading}">${2:$1}</h1>
 snippet input
-	<input type="${1:text/submit/hidden/button}" name="${2:some_name}" value="${3}"`Close()`>${4}
+	<input type="${1:text/submit/hidden/button}" name="${2:some_name}" value="${3}"${4}`Close()`>${5}
 snippet label
 	<label for="${2:$1}">${1:name}</label><input type="${3:text/submit/hidden/button}" name="${4:$2}" value="${5}" id="${6:$2}"`Close()`>${7}
 snippet link
