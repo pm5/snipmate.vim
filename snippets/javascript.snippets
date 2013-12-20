@@ -1,17 +1,17 @@
 # Prototype
 snippet proto
 	${1:class_name}.prototype.${2:method_name} =
-	function(${3:first_argument}) {
+	function (${3:first_argument}) {
 		${4:// body...}
-	};
+	}${5:;}
 # Function
 snippet func
-	function ${1:function_name}(${2:argument}) {
+	function ${1:function_name}(${2:arguments}) {
 		${3:// body...}
-	}
+	}${4}
 # Anonymous Function
 snippet f
-	function (${1}) {${2}};
+	function (${1}) {${2}}${3:;}
 # if
 snippet if
 	if (${1:true}) {${2}}
@@ -57,8 +57,9 @@ snippet do
 	do {
 		${2:/* code */}
 	} while (${1:/* condition */});
-# Object Method
-snippet :f
-	${1:method_name}: function(${2:attribute}) {
-		${4}
-	}${3:,}
+snippet app
+	<script src="${1:app.js}"></script>${2}
+snippet d3js
+	<script src="${1:http://d3js.org/d3.v3.min.js}"></script>${2}
+snippet angularjs
+	<script src="${1:https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js}"></script>${2}
