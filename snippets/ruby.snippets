@@ -1,23 +1,16 @@
-# #!/usr/bin/env ruby
 snippet #!
 	#!/usr/bin/env ruby
 
-# New Block
-snippet =b
+snippet =begin
 	=begin rdoc
 		${1}
 	=end
-snippet y
-	:yields: ${1:arguments}
-snippet rb
-	#!/usr/bin/env ruby -wKU
-snippet beg
+snippet begin
 	begin
 		${3}
 	rescue ${1:Exception} => ${2:e}
-	end
-
-snippet req
+	end${4}
+snippet require
 	require "${1}"${2}
 snippet #
 	# =>
@@ -26,152 +19,57 @@ snippet end
 snippet case
 	case ${1:object}
 	when ${2:condition}
-		${3}
-	end
+	end${3}
 snippet when
 	when ${1:condition}
-		${2}
 snippet def
 	def ${1:method_name}
-		${2}
-	end
-snippet deft
+	end${2}
+snippet test
 	def test_${1:case_name}
-		${2}
-	end
+	end${2}
 snippet if
 	if ${1:condition}
-		${2}
-	end
-snippet ife
-	if ${1:condition}
-		${2}
-	else
-		${3}
-	end
-snippet elsif
-	elsif ${1:condition}
-		${2}
+	end${2}
 snippet unless
 	unless ${1:condition}
-		${2}
-	end
+	end${2}
 snippet while
 	while ${1:condition}
-		${2}
-	end
+	end${2}
 snippet for
 	for ${1:e} in ${2:c}
-		${3}
-	end		
+	end${3}
 snippet until
 	until ${1:condition}
-		${2}
-	end
-snippet cla class .. end
+	end${2}
+snippet class
 	class ${1:`substitute(Filename(), '^.', '\u&', '')`}
-		${2}
-	end
-snippet cla class .. initialize .. end
-	class ${1:`substitute(Filename(), '^.', '\u&', '')`}
-		def initialize(${2:args})
-			${3}
-		end
-
-
-	end
-snippet cla class .. < ParentClass .. initialize .. end
-	class ${1:`substitute(Filename(), '^.', '\u&', '')`} < ${2:ParentClass}
-		def initialize(${3:args})
-			${4}
-		end
-
-
-	end
-snippet cla ClassName = Struct .. do .. end
-	${1:`substitute(Filename(), '^.', '\u&', '')`} = Struct.new(:${2:attr_names}) do
-		def ${3:method_name}
-			${4}
-		end
-
-
-	end
-snippet cla class BlankSlate .. initialize .. end
-	class ${1:BlankSlate}
-		instance_methods.each { |meth| undef_method(meth) unless meth =~ /\A__/ }
-snippet cla class << self .. end
-	class << ${1:self}
-		${2}
-	end
-# class .. < DelegateClass .. initialize .. end
-snippet cla-
-	class ${1:`substitute(Filename(), '^.', '\u&', '')`} < DelegateClass(${2:ParentClass})
-		def initialize(${3:args})
-			super(${4:del_obj})
-
-			${5}
-		end
-
-
-	end
+	end${2}
 snippet mod module .. end
 	module ${1:`substitute(Filename(), '^.', '\u&', '')`}
-		${2}
-	end
-snippet mod module .. module_function .. end
-	module ${1:`substitute(Filename(), '^.', '\u&', '')`}
-		module_function
-
-		${2}
-	end
-snippet mod module .. ClassMethods .. end
-	module ${1:`substitute(Filename(), '^.', '\u&', '')`}
-		module ClassMethods
-			${2}
-		end
-
-		module InstanceMethods
-
-		end
-
-		def self.included(receiver)
-			receiver.extend         ClassMethods
-			receiver.send :include, InstanceMethods
-		end
-	end
-# attr_reader
+	end${2}
 snippet r
-	attr_reader :${1:attr_names}
-# attr_writer
+	attr_reader ${1:attr_names}
 snippet w
-	attr_writer :${1:attr_names}
-# attr_accessor
+	attr_writer ${1:attr_names}
 snippet rw
-	attr_accessor :${1:attr_names}
-# include Enumerable
+	attr_accessor ${1:attr_names}
 snippet Enum
 	include Enumerable
 
 	def each(&block)
 		${1}
 	end
-# include Comparable
 snippet Comp
 	include Comparable
 
 	def <=>(other)
 		${1}
 	end
-# extend Forwardable
 snippet Forw-
 	extend Forwardable
-# def self
-snippet defs
-	def self.${1:class_method_name}
-		${2}
-	end
-# def method_missing
-snippet defmm
+snippet method_missing
 	def method_missing(meth, *args, &blk)
 		${1}
 	end
@@ -218,23 +116,18 @@ snippet flao
 	inject(Array.new) { |${1:arr}, ${2:a}| $1.push(*$2)}${3}
 snippet zip
 	zip(${1:enums}) { |${2:row}| ${3} }
-# downto(0) { |n| .. }
-snippet dow
+snippet downto
 	downto(${1:0}) { |${2:n}| ${3} }
-snippet ste
+snippet step
 	step(${1:2}) { |${2:n}| ${3} }
-snippet tim
+snippet times
 	times { |${1:n}| ${2} }
-snippet upt
+snippet upto
 	upto(${1:1.0/0.0}) { |${2:n}| ${3} }
-snippet loo
+snippet loop
 	loop { ${1} }
-snippet ea
+snippet each
 	each { |${1:e}| ${2} }
-snippet ead
-	each do |${1:e}|
-		${2}
-	end	
 snippet eab
 	each_byte { |${1:byte}| ${2} }
 snippet eac- each_char { |chr| .. }
@@ -257,23 +150,23 @@ snippet eal
 snippet eald
 	each_line do |${1:line}|
 		${2}
-	end		
+	end
 snippet eap
 	each_pair { |${1:name}, ${2:val}| ${3} }
 snippet eapd
 	each_pair do |${1:name}, ${2:val}|
 		${3}
-	end			
+	end
 snippet eas-
 	each_slice(${1:2}) { |${2:group}| ${3} }
 snippet easd-
 	each_slice(${1:2}) do |${2:group}|
 		${3}
-	end		
+	end
 snippet eav
 	each_value { |${1:val}| ${2} }
 snippet eavd
-	each_value do |${1:val}| 
+	each_value do |${1:val}|
 		${2}
 	end
 snippet eawi
@@ -287,19 +180,19 @@ snippet reve
 snippet reved
 	reverse_each do |${1:e}|
 		${2}
-	end	
+	end
 snippet inj
 	inject(${1:init}) { |${2:mem}, ${3:var}| ${4} }
 snippet injd
 	inject(${1:init}) do |${2:mem}, ${3:var}|
 		${4}
-	end		
+	end
 snippet map
 	map { |${1:e}| ${2} }
 snippet mapd
-	map do |${1:e}| 
+	map do |${1:e}|
 		${2}
-	end		
+	end
 snippet mapwi-
 	enum_with_index.map { |${1:e}, ${2:i}| ${3} }
 snippet sor
@@ -333,13 +226,13 @@ snippet fin
 snippet find
 	find do |${1:e}|
 		${2}
-	end		
+	end
 snippet fina
 	find_all { |${1:e}| ${2} }
 snippet finad
 	find_all do |${1:e}|
 		${2}
-	end			
+	end
 snippet gre
 	grep(${1:/pattern/}) { |${2:match}| ${3} }
 snippet sub
@@ -349,7 +242,7 @@ snippet sca
 snippet scad
 	scan(${1:/pattern/}) do |${2:match}|
 		${3}
-	end		
+	end
 snippet max
 	max { |a, b| ${1} }
 snippet min
@@ -359,7 +252,7 @@ snippet par
 snippet pard
 	partition do |${1:e}|
 		${2}
-	end		
+	end
 snippet rej
 	reject { |${1:e}| ${2} }
 snippet rejd
@@ -371,7 +264,7 @@ snippet sel
 snippet seld
 	select do |${1:e}|
 		${2}
-	end		
+	end
 snippet lam
 	lambda { |${1:args}| ${2} }
 snippet do
