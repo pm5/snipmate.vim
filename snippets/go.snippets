@@ -1,0 +1,38 @@
+snippet @
+	/**
+	 * @file        ${1}
+	 *
+	 * @date        `strftime("%Y-%m-%d")`
+	 *
+	 * @author      `g:snips_author`
+	 */
+	${2}
+snippet /**
+	/**
+	 * ${1}
+	 */
+	${2}
+snippet main
+	func main() {
+		${1}
+	}
+snippet func
+	func ${1}(${2}) ${3}{
+		${4}
+	}
+snippet struct
+	type ${1} struct {
+		${2}
+	}
+snippet interface
+	type ${1} interface {
+		${2}
+	}
+snippet {
+	{
+		${1}
+	}
+snippet iferr
+	if err != nil {
+		${1}
+	}${2}

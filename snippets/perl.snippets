@@ -10,6 +10,10 @@ snippet #!
 	$1
 snippet .
 	 =>
+snippet {
+	{
+		${1}
+	}
 snippet sub
 	sub ${1:function_name}
 	{
@@ -17,7 +21,15 @@ snippet sub
 	}
 snippet if
 	if (${1}) {
-		${2:# body...}
+		${2}
+	}
+snippet else
+	else {
+		${1}
+	}
+snippet elsif
+	elsif (${1}) {
+		${2}
 	}
 snippet unless
 	unless (${1}) {

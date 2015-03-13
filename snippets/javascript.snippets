@@ -1,32 +1,37 @@
+snippet #!
+	#!/usr/bin/env node
+	'use strict'
 # Prototype
 snippet proto
 	${1:class_name}.prototype.${2:method_name} =
-	function (${3:first_argument}) {
-		${4:// body...}
+	function (${3}) {
+		${4}
 	}${5:;}
 # Function
 snippet func
-	function ${1:function_name}(${2:arguments}) {
-		${4:// body...}
-	}${3}
+	function ${1}(${2}) {
+		${4}
+	}${3:;}
+snippet (
+	(${1})${2}
 # if
 snippet if
-	if (${1:true}) {${2}}
+	if (${1}) {${2}}
 # else
 snippet else
 	else {${1}}
 # tertiary conditional
 snippet ?
-	${1:/* condition */} ? ${2:a} : ${3:b}
+	${1} ? ${2} : ${3}
 # switch
 snippet switch
-	switch (${1:expression}) {
-		case '${3:case}':
-			${4:// code}
+	switch (${1}) {
+		case '${3}':
+			${4}
 			break;
 		${5}
 		default:
-			${2:// code}
+			${2}
 	}
 # case
 snippet case
