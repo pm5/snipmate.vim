@@ -13,9 +13,9 @@ snippet <?
 	 */
 	${2}
 snippet req
-	require('${1:file}');${2}
+	require '${1:file}';${2}
 snippet req1
-	require_once('${1:file}');${2}
+	require_once '${1:file}';${2}
 snippet $_ COOKIE['...']
 	$_COOKIE['${1:variable}']${2}
 snippet $_ ENV['...']
@@ -119,5 +119,5 @@ snippet prop
 		return $this->$1;
 	}
 	${5}
-snippet array
+snippet array(
 	array(${2})${1}
