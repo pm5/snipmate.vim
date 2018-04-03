@@ -1,0 +1,9 @@
+snippet #!
+	#!/usr/bin/env stack
+	-- stack --resolver lts-8.20 --install-ghc script
+	{-# LANGUAGE OverloadedStrings #-}
+	$1
+
+snippet module
+	module `Filename("$1")` (${1}) where
+	${2}
