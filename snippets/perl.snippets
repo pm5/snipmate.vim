@@ -1,7 +1,7 @@
 snippet #!
 	#!/usr/bin/env perl -w
 
-	use Modern::Perl;
+	use v5.026;
 
 	$1
 snippet class
@@ -9,10 +9,19 @@ snippet class
 
 	use base qw(${2:ParentClass});
 
-	sub new
-	{
-		my $class = shift;
+	sub new {
+		my ($class) = @_;
 		$class = ref $class if ref $class;
 		my $self = bless {}, $class;
 		$self;
 	}
+
+snippet pod
+	=pod
+
+	=head1 ${1}
+
+	${2}
+
+	=cut
+	${3}
