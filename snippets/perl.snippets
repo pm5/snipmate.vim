@@ -4,6 +4,8 @@ snippet #!
 	use v5.026;
 	use strict;
 	use warnings;
+	use utf8;
+	binmode STDIN, ":encoding(utf-8)";
 	binmode STDOUT, ":encoding(utf-8)";
 
 	$1
