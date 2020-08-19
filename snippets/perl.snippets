@@ -1,12 +1,11 @@
 snippet #!
 	#!/usr/bin/env perl -w
 
-	use v5.026;
+	use 5.026;
+	use utf8;
+	use open IO => ":locale";
 	use strict;
 	use warnings;
-	use utf8;
-	binmode STDIN, ":encoding(utf-8)";
-	binmode STDOUT, ":encoding(utf-8)";
 
 	$1
 snippet class
