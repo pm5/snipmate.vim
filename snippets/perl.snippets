@@ -1,11 +1,9 @@
 snippet #!
-	#!/usr/bin/env perl -w
+	#!/usr/bin/env perl
 
-	use 5.026;
-	use utf8;
+	use v5.30;
 	use open IO => ":locale";
-	use strict;
-	use warnings;
+	use experimental qw[signatures switch];
 
 	$1
 snippet class
